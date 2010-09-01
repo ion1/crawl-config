@@ -1,0 +1,33 @@
+#!/bin/sh
+set -e
+
+if [ -z "$UPDATE_BASE_BRANCH_RUNNING" ]; then
+  local_branch="$(git symbolic-ref HEAD)"
+  case "$local_branch" in
+  refs/heads/*)
+    local_branch="${local_branch#refs/heads/}" ;;
+  *)
+    >&2 printf 'Failed to get a branch from HEAD: "%s"\n' "$local_branch"
+    exit 1
+    ;;
+  esac
+
+  case "$local_branch" in
+  master)
+    remote_branch=master ;;
+  *)
+    remote_branch="stone_soup-$local_branch" ;;
+  esac
+
+  export local_branch remote_branch
+fi
+
+cmd="$(update-base-branch --wrapper --branch "$local_branch-base")"
+eval "$cmd"
+
+uri='http://crawl-ref.git.sourceforge.net/git/gitweb.cgi?p=crawl-ref/crawl-ref;a=blob_plain;f=crawl-ref/settings/init.txt;hb='
+
+mkdir settings
+2>&3 wget -O settings/init.txt "$uri$remote_branch"
+
+# vim:set et sw=2 sts=2:
