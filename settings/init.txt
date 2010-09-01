@@ -69,6 +69,7 @@ clear_messages          = true
 # job     = (Fighter |...| Wanderer | random)
 # random_pick = true
 # good_random = false
+# restart_after_game = true
 
 ##### 2-  File System ###############################################
 #
@@ -363,6 +364,10 @@ force_more_message = Your scales start
 force_more_message = You fall through a shaft
 force_more_message = You are starting to lose your buoyancy
 
+# Announcements of timed portal vaults (bazaar, labyrinths):
+force_more_message = interdimensional caravan
+force_more_message = distant snort
+
 ##### 4-k	Firing Commands #######################
 #
 # fire_items_start = a
@@ -449,6 +454,7 @@ char_set         = unicode
 # colour.yellow    = brown
 #
 # pizza            = Sausage
+# show_player_species = true
 
 # See options_guide.txt for the options
 # cset_ascii, cset_ibm, cset_dec, cset_unicode, cset_any,
