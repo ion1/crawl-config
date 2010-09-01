@@ -16,6 +16,7 @@
 # always_confirm_butcher  = true
 # target_unshifted_dirs   = true
 # clear_messages          = true
+clear_messages          = true
 #
 # Similar options for reverting later changes:
 # include                 = 052_monster_glyphs.txt
@@ -106,6 +107,7 @@ drop_filter = useless_item
 
 # default_autopickup = false
 # autopickup_no_burden = true
+autopickup_no_burden = true
 # pickup_thrown = false
 # pickup_dropped = true
 # chunks_autopickup = false
@@ -113,8 +115,10 @@ drop_filter = useless_item
 #
 # drop_mode = (multi | single)
 # pickup_mode = (single | multi | auto:5)
+pickup_mode = single
 # drop_filter = skeleton, rotting, corpse
 # default_friendly_pickup = (none | friend | player | all)
+default_friendly_pickup = none
 
 ##### 4-b	Targetting ############################
 #
@@ -135,10 +139,17 @@ drop_filter = useless_item
 # friend_brand       = hi:green
 # neutral_brand      = hi:lightgrey
 # stab_brand         = hi:blue
+friend_brand       = hi:green
+neutral_brand      = hi:lightgrey
+stab_brand         = hi:blue
 # may_stab_brand     = hi:yellow
 # heap_brand         = reverse
 # feature_item_brand = reverse
 # trap_item_brand    = reverse
+may_stab_brand       = underline
+heap_brand         = reverse
+feature_item_brand = reverse
+trap_item_brand    = reverse
 # verbose_monster_pane = false
 
 ##### 4-e	Level Map Functions ###################
@@ -164,12 +175,16 @@ drop_filter = useless_item
 #
 # travel_delay = 20
 # explore_delay = -1
+travel_delay = -1
+explore_delay = 20
 # travel_avoid_terrain = shallow water
 #
 # explore_greedy   = false
 # explore_stop     = items,greedy_pickup,stairs,shops,altars,gates
 # explore_stop    += greedy_visited_item_stack
 # explore_improved = true
+explore_stop     = items,greedy_items,stairs,shops,altars,gates
+explore_improved = true
 #
 # explore_stop_pickup_ignore = curare
 auto_exclude = oklob plant,statue,curse skull,roxanne, hyperactive
@@ -181,9 +196,17 @@ auto_exclude = oklob plant,statue,curse skull,roxanne, hyperactive
 # tc_exclude_circle = red
 
 # runrest options (require runrest.lua to be included above)
+runrest_ignore_message = You feel.*(better|health improve|sick|speed up)
+runrest_ignore_message = You have got your breath back
+runrest_ignore_message = Your.*skill increases to level
+runrest_ignore_message = You smell.*(decay|rotten|rotting)
+runrest_ignore_message = (disgusting|rotten) in your inventory
+runrest_ignore_message = smell of rotting flesh
+runrest_ignore_message = have completely rotted away
 runrest_ignore_poison  = 2:30
 runrest_ignore_monster = butterfly:1
 # runrest_ignore_monster = swamp worm:3
+runrest_ignore_monster = swamp worm:3
 
 # The file runrest_messages.txt contains a list of default
 # runrest message settings. Add your own before this to override
@@ -211,6 +234,8 @@ stash_filter = ring of hunger, amulet of inaccuracy
 
 # annotate_item_class = true
 # annotate_item_dropped = true
+annotate_item_class = true
+annotate_item_dropped = true
 
 ##### 4-i	Command Enhancements ##################
 #
@@ -225,11 +250,14 @@ stash_filter = ring of hunger, amulet of inaccuracy
 # prefer_safe_chunks     = false
 # easy_eat_chunks        = true
 # easy_eat_gourmand      = true
+easy_eat_chunks        = true
+easy_eat_gourmand      = true
 # easy_eat_contaminated  = true
 # prompt_for_swap        = false
 # easy_quit_item_prompts = false
 # easy_exit_menu         = false
 # sort_menus = pickup: true : art, ego, basename, qualname, curse, qty
+sort_menus = pickup: true : art, ego, basename, qualname, curse, qty
 sort_menus = inv: true : equipped, freshness, charged
 # menu_cursor            = true
 
@@ -240,6 +268,11 @@ sort_menus = inv: true : equipped, freshness, charged
 # hp_colour = 50:yellow, 25:red
 # mp_colour = 50:yellow, 25:red
 # stat_colour = 1:lightred, 3:red
+hp_warning = 30
+mp_warning = 0
+hp_colour = 50:yellow, 25:red
+mp_colour = 50:yellow, 25:red
+stat_colour = 1:lightred, 3:red
 
 # status_caption_colour        = yellow
 # classic_hud                  = true
@@ -247,14 +280,17 @@ sort_menus = inv: true : equipped, freshness, charged
 # msg_min_height               = 7
 # msg_max_height               = 10
 # mlist_allow_alternate_layout = true
+mlist_allow_alternate_layout = true
 # messages_at_top              = true
 # mlist_targetting             = true
 # show_gold_turns              = true
+show_gold_turns              = true
 
 # clear_messages             = true
 # small_more                 = true
 # show_more                  = false
 # show_inventory_weights     = true
+show_inventory_weights     = true
 # item_stack_summary_minimum = 5
 # list_rotten                = false
 # show_beam                  = false
@@ -334,14 +370,20 @@ force_more_message = You are starting to lose your buoyancy
 # fire_order += javelin / dart / stone / rock / spear / net / handaxe / dagger / club
 # fire_order += inscribed
 
+fire_order  = launcher, inscribed, return
+# damage      20    10       7        6      5            4               0
+fire_order += rock, javelin, handaxe, spear, dart / club, stone / dagger, net
+
 ##### 4-l	Channels ##############################
 #
 # channel.multiturn = mute
 
 ##### 4-m	Inscriptions ##########################
 #
+autoinscribe = distortion:!w
 # autoinscribe = bad_item.*potion:!q
 # autoinscribe = potion.*mutation:!q
+autoinscribe = potion.*(decay|degeneration|mutation|paralysis|poison|slowing):!q
 # autoinscribe = royal jell:=g
 # autoinscribe_artefacts = false
 # autoinscribe_cursed = false
@@ -397,6 +439,7 @@ note_monsters = orb of fire, ancient lich, Sigmund
 # mouse_input      = true
 # wiz_mode         = no
 # char_set         = ascii
+char_set         = unicode
 # use_fake_player_cursor = false
 #
 # classic_item_colours = true
