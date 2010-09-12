@@ -210,6 +210,8 @@ runrest_ignore_monster = butterfly:1
 # runrest_ignore_monster = swamp worm:3
 runrest_ignore_monster = swamp worm:3
 
+runrest_stop_message = buoyancy|expire|float gracefully|transformation
+
 # The file runrest_messages.txt contains a list of default
 # runrest message settings. Add your own before this to override
 # later settings.
@@ -363,7 +365,7 @@ menu_colour = notes:white:Reached XP level
 force_more_message = You have reached level
 force_more_message = Your scales start
 force_more_message = You fall through a shaft
-force_more_message = You are starting to lose your buoyancy
+force_more_message = buoyancy|expire|float gracefully|transformation
 
 # Announcements of timed portal vaults (bazaar, labyrinths):
 force_more_message = interdimensional caravan
