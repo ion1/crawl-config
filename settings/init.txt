@@ -272,11 +272,11 @@ sort_menus = inv: true : equipped, freshness, charged
 # hp_colour = 50:yellow, 25:red
 # mp_colour = 50:yellow, 25:red
 # stat_colour = 1:lightred, 3:red
-hp_warning = 30
-mp_warning = 0
-hp_colour = 50:yellow, 25:red
-mp_colour = 50:yellow, 25:red
-stat_colour = 1:lightred, 3:red
+hp_warning = 50
+mp_warning = 25
+hp_colour = 100:green, 99:lightgray, 75:yellow, 50:lightred, 25:red
+mp_colour = 100:green, 99:lightgray, 75:yellow, 50:lightred, 25:red
+stat_colour = 3:red, 7:lightred
 
 # status_caption_colour        = yellow
 # classic_hud                  = true
