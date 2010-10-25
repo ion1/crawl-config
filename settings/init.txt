@@ -288,6 +288,7 @@ mlist_allow_alternate_layout = true
 # mlist_targetting             = true
 # show_gold_turns              = true
 show_gold_turns              = true
+# show_real_turns              = true
 
 # clear_messages             = true
 # small_more                 = true
