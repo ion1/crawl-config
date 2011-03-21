@@ -196,8 +196,7 @@ auto_exclude = oklob plant,statue,curse skull,roxanne, hyperactive
 # tc_exclude_circle = red
 
 # runrest options (require runrest.lua to be included above)
-runrest_ignore_message = You feel.*(better|health improve|sick|speed up)
-runrest_ignore_message = You have got your breath back
+runrest_ignore_message = You feel.*sick
 runrest_ignore_message = Your.*skill increases to level
 runrest_ignore_message = You smell.*(decay|rotten|rotting)
 runrest_ignore_message = (disgusting|rotten) in your inventory
