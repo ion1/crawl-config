@@ -209,6 +209,7 @@ runrest_ignore_monster = swamp worm:3
 
 runrest_stop_message = buoyancy|expire|float gracefully|transformation
 runrest_stop_message = You have gained.*skill
+runrest_stop_message = warns you
 
 # The file runrest_messages.txt contains a list of default
 # runrest message settings. Add your own before this to override
@@ -360,6 +361,7 @@ force_more_message = Your scales start
 force_more_message = You fall through a shaft
 force_more_message = buoyancy|expire|float gracefully|transformation
 force_more_message = You have gained.*skill
+force_more_message = warns you
 
 # Announcements of timed portal vaults (bazaar, labyrinths):
 force_more_message = interdimensional caravan
