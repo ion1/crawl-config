@@ -202,6 +202,7 @@ runrest_ignore_message = You smell.*(decay|rotten|rotting)
 runrest_ignore_message = (disgusting|rotten) in your inventory
 runrest_ignore_message = smell of rotting flesh
 runrest_ignore_message = have completely rotted away
+runrest_ignore_message = Your.*stops glowing
 runrest_ignore_poison  = 2:30
 runrest_ignore_monster = butterfly:1
 # runrest_ignore_monster = swamp worm:3
