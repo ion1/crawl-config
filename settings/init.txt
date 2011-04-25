@@ -26,7 +26,7 @@ clear_messages          = true
 # Crawl Init file
 #
 # On Unix systems (such as Mac OS X, Linux and the BSDs), you must copy
-# init.txt to ~/.crawlrc as:
+# init.txt to ~/.crawlrc or ~/.crawl/init.txt as:
 #   cp init.txt ~/.crawlrc
 #
 # Lines beginning with '#' are comments.  The basic syntax is:
@@ -60,13 +60,13 @@ clear_messages          = true
 #
 # name = Delilah
 # remember_name = false
-# weapon = (short sword | falchion | hand axe | spear | mace | trident | random)
-# book = (fire | ice | summ | random)
+# weapon = (short sword | falchion | hand axe | spear | mace | trident
+#           | unarmed | random)
+# book = (fire | ice | random)
 # wand = (enslavement | confusion | magic darts | frost | flame | striking | random)
-# chaos_knight = (Xom | Makhleb | Lugonu | random)
-# priest       = (Zin | Yredelemnul | Beogh | random)
 # species = (Human |...| Vampire | random)
 # job     = (Fighter |...| Wanderer | random)
+# religion = (Beogh | Zin | random)
 # random_pick = true
 # good_random = false
 # restart_after_game = true
@@ -105,8 +105,7 @@ autopickup = $?!+"/%
 include = autopickup_exceptions.txt
 
 # default_autopickup = false
-# autopickup_no_burden = true
-autopickup_no_burden = true
+# autopickup_no_burden = false
 # pickup_thrown = false
 # pickup_dropped = true
 # chunks_autopickup = false
@@ -180,11 +179,11 @@ explore_delay = 20
 # travel_avoid_terrain = shallow water
 #
 # explore_greedy   = false
-# explore_stop     = items,greedy_pickup,stairs,shops,altars,gates
+# explore_stop     = items,greedy_pickup_smart,stairs,shops,altars,gates
 # explore_stop    += greedy_visited_item_stack
 # explore_improved = true
-explore_stop     = items,greedy_items,stairs,shops,altars,gates
 explore_improved = true
+# travel_key_stop = false
 #
 # explore_stop_pickup_ignore = curare
 auto_exclude = oklob plant,statue,curse skull,roxanne, hyperactive
@@ -228,9 +227,6 @@ trapwalk_safe_hp = dart:20,needle:15,arrow:35,bolt:45,spear:40,axe:45,blade:95
 ##### 4-h       Stashes ###############################
 #
 
-# 14 filters out corpses
-# stash_filter = 14
-
 # annotate_item_class = true
 # annotate_item_dropped = true
 annotate_item_class = true
@@ -254,7 +250,7 @@ easy_eat_gourmand      = true
 # easy_eat_contaminated  = true
 # prompt_for_swap        = false
 # easy_quit_item_prompts = false
-# easy_exit_menu         = false
+# easy_exit_menu         = true
 # sort_menus = pickup: true : art, ego, basename, qualname, curse, qty
 sort_menus = pickup: true : art, ego, basename, qualname, curse, qty
 sort_menus = inv: true : equipped, freshness, charged
@@ -283,8 +279,8 @@ mlist_allow_alternate_layout = true
 # mlist_targetting             = true
 # show_gold_turns              = true
 show_gold_turns              = true
-# show_real_turns              = true
-show_real_turns              = true
+# show_game_turns              = true
+show_game_turns              = true
 
 # clear_messages             = true
 # small_more                 = true
@@ -352,8 +348,6 @@ menu_colour = notes:white:Reached XP level
 
 # You can also enforce a --more-- prompt for messages
 
-## Reduce chance of drowning because levitation runs out:
-# force_more_message = You are starting to lose your buoyancy
 ## Avoid wasting turns with aborted actions:
 # force_more_message = There are no visible monsters within range
 # force_more_message = This wand has no charges
@@ -365,6 +359,9 @@ force_more_message = buoyancy|expire|float gracefully|transformation
 force_more_message = You have gained.*skill
 force_more_message = warns you
 force_more_message = You feel heavier
+
+## Reduce chance of drowning because levitation or form runs out:
+force_more_message = Careful!
 
 # Announcements of timed portal vaults (bazaar, labyrinths):
 force_more_message = interdimensional caravan
@@ -459,8 +456,7 @@ char_set         = unicode
 # show_player_species = true
 
 # See options_guide.txt for the options
-# cset_ascii, cset_ibm, cset_dec, cset_unicode, cset_any,
-# feature, mon_glyph
+# cset, feature, mon_glyph
 
 ##### 6-b       DOS and Windows #######################
 #
