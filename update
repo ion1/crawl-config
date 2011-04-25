@@ -25,9 +25,9 @@ fi
 cmd="$(update-base-branch --wrapper --branch "$local_branch-base")"
 eval "$cmd"
 
-uri='http://crawl-ref.git.sourceforge.net/git/gitweb.cgi?p=crawl-ref/crawl-ref;a=blob_plain;f=crawl-ref/settings/init.txt;hb='
+uri="http://www.gitorious.org/crawl/crawl/blobs/raw/$remote_branch/crawl-ref/settings/init.txt"
 
 mkdir settings
-2>&3 wget -O settings/init.txt "$uri$remote_branch"
+2>&3 wget -O settings/init.txt "$uri"
 
 # vim:set et sw=2 sts=2:
