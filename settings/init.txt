@@ -235,10 +235,9 @@ annotate_item_dropped = true
 ##### 4-i       Command Enhancements ##################
 #
 # auto_list     = false
-# auto_switch   = false
+# auto_switch   = true
 # easy_open     = false
 # easy_unequip  = false
-# autoswitch    = false
 # equip_unequip = true
 # easy_confirm  = (none | safe)
 # allow_self_target      = (yes | no | prompt)
@@ -294,7 +293,7 @@ show_inventory_weights     = true
 # show_beam                  = false
 # msg_condense_repeats   = false
 # msg_condense_short     = false
-# show_spammy_spoilers   = false
+# show_no_ctele          = false
 
 #####          Colours (messages and menus) #####
 #
