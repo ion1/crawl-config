@@ -211,6 +211,8 @@ runrest_stop_message = warns you
 runrest_stop_message = You feel heavier
 runrest_stop_message = You now have enough gold
 
+runrest_stop_message = Careful!
+
 # The file runrest_messages.txt contains a list of default
 # runrest message settings. Add your own before this to override
 # later settings.
