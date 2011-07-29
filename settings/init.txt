@@ -215,6 +215,316 @@ runrest_ignore_monster = swamp worm:3
 runrest_ignore_monster = strange disturbance
 runrest_ignore_monster = fish:2
 
+# A verbatim copy of all force_more_messages, since apparently force_more
+# doesn’t implicitly stop runrest. :-(
+
+runrest_stop_message = You have gained.*skill
+runrest_stop_message = Ashenzari warns you
+runrest_stop_message = You feel heavier
+runrest_stop_message = You now have enough gold
+runrest_stop_message = is unaffected
+runrest_stop_message = You don't know that spell
+runrest_stop_message = This wand has no charges
+runrest_stop_message = You don't have enough magic to cast that spell
+runrest_stop_message = You have disarmed
+runrest_stop_message = You feel a strange sense of stasis
+runrest_stop_message = You are mesmerised by
+runrest_stop_message = Your ring of flames (is guttering|gutters) out
+runrest_stop_message = A huge blade
+runrest_stop_message = You have blundered into a Zot trap
+runrest_stop_message = The writing blurs in front of your eyes
+runrest_stop_message = starving
+runrest_stop_message = devoid of blood
+runrest_stop_message = divine experience
+runrest_stop_message = lose consciousness
+runrest_stop_message = Jiyva alters your body
+runrest_stop_message = no longer charmed
+
+## Reduce chance of drowning because levitation or form runs out:
+runrest_stop_message = Careful!
+
+## source/main.cc _decrement_durations
+
+runrest_stop_message = Your icy (armour|shield) starts to melt
+runrest_stop_message = Your icy (armour|shield) evaporates
+runrest_stop_message = Your hearing returns
+runrest_stop_message = Your (repel|deflect) missiles spell is about to expire
+runrest_stop_message = You feel less protected from missiles
+runrest_stop_message = Your skin is crawling a little less now
+runrest_stop_message = Your prayer is over
+runrest_stop_message = Your divine shield starts to fade
+runrest_stop_message = Your divine shield fades away
+runrest_stop_message = Your .* seems blunter
+runrest_stop_message = Your .* feels lighter
+runrest_stop_message = Your .* goes out
+runrest_stop_message = Your .* stops glowing
+runrest_stop_message = Your .*'s frost melts away
+runrest_stop_message = Your .* stops dripping with poison
+runrest_stop_message = Your .* stops crackling
+runrest_stop_message = Your .* seems straighter
+runrest_stop_message = Your .* seems less pained
+runrest_stop_message = Your .* seems more stable
+runrest_stop_message = Your .* stops emitting sparks
+runrest_stop_message = Your .*'s light goes out
+runrest_stop_message = Your .* stops repelling magic
+runrest_stop_message = Your .* seems inexplicably less special
+runrest_stop_message = Your transformation is almost over
+# untransform {
+runrest_stop_message = Your transformation has ended
+runrest_stop_message = Your .* revert to their normal proportions
+runrest_stop_message = You revert to your normal fleshy form
+runrest_stop_message = You warm up again
+runrest_stop_message = You feel yourself come back to life
+# }
+# emergency_untransform
+runrest_stop_message = You quickly transform back into your natural form
+runrest_stop_message = You have got your breath back
+runrest_stop_message = You start to feel a little slower
+runrest_stop_message = You feel sluggish
+runrest_stop_message = You start to feel a little less insulated
+runrest_stop_message = You feel conductive
+runrest_stop_message = You start to feel less resistant to (fire|cold|poison)
+runrest_stop_message = Your (fire|cold|poison) resistance expires
+runrest_stop_message = You feel closer to the material plane
+runrest_stop_message = You are firmly grounded in the material plane once more
+runrest_stop_message = You feel less regenerative
+runrest_stop_message = You begin to squint at shadows
+runrest_stop_message = Your eyesight blurs momentarily
+runrest_stop_message = You feel less empathic
+runrest_stop_message = Your magical shield disappears
+runrest_stop_message = Your skin feels tender
+runrest_stop_message = You start to feel a little uncertain
+runrest_stop_message = You feel uncertain
+runrest_stop_message = Your unholy channel is weakening
+runrest_stop_message = Your unholy channel expires
+runrest_stop_message = You feel less studious
+runrest_stop_message = You feel less stealthy
+runrest_stop_message = You feel less lethal
+runrest_stop_message = You flicker for a moment
+runrest_stop_message = You flicker back into view
+runrest_stop_message = You feel less charismatic
+runrest_stop_message = Your slime is starting to congeal
+runrest_stop_message = You feel less slimy
+runrest_stop_message = Your thoughts are your own once more
+# :-P
+runrest_stop_message = Quad Damage is wearing off
+runrest_stop_message = Your dark mirror aura disappears
+runrest_stop_message = You feel like a meek peon again
+runrest_stop_message = Your hands slow down
+runrest_stop_message = Your .* stop glowing
+runrest_stop_message = The bond with your blade fades away
+runrest_stop_message = You break out of your daze
+runrest_stop_message = Your fear fades away
+runrest_stop_message = The ground is no longer liquid beneath you
+runrest_stop_message = You feel a little less (mighty|agile|clever) now
+runrest_stop_message = You are no longer berserk
+runrest_stop_message = You pass out from exhaustion
+runrest_stop_message = You are no longer glowing
+runrest_stop_message = The winds around you start to calm down
+runrest_stop_message = The winds around you calm down
+runrest_stop_message = You are starting to lose your buoyancy
+runrest_stop_message = You lose control over your flight
+runrest_stop_message = You feel your flesh rotting away
+runrest_stop_message = Your time is quickly running out
+runrest_stop_message = Your life is in your own hands again
+# zin_remove_divine_stamina
+runrest_stop_message = Your divine stamina fades away
+# elyvilon_remove_divine_vigour
+runrest_stop_message = Your divine vigour fades away
+runrest_stop_message = Your astral sight fades away
+runrest_stop_message = Your divine protection fades away
+runrest_stop_message = The divine light dispels your darkness
+runrest_stop_message = Your shroud begins to fray at the edges
+runrest_stop_message = Your shroud unravels
+
+## source/beam.cc affect_player_enchantment
+
+runrest_stop_message = Strange energies course through your body
+runrest_stop_message = Your body is wracked with pain
+runrest_stop_message = Pain shoots through your body
+runrest_stop_message = You convulse
+runrest_stop_message = You are blasted
+runrest_stop_message = You feel like a pig
+
+## source/effects.cc
+
+runrest_stop_message = You are blasted by holy energy
+runrest_stop_message = Your body is wracked with pain
+runrest_stop_message = Your knowledge of.*becomes hazy all of a sudden, and you forget the spell
+runrest_stop_message = Something smites you
+runrest_stop_message = The air twists around and violently strikes you in flight
+runrest_stop_message = The air twists around and strikes you
+runrest_stop_message = Something feeds on your intellect
+runrest_stop_message = You feel haunted
+runrest_stop_message = Orcish apparitions take form around you
+runrest_stop_message = Your disease is taking its toll
+runrest_stop_message = Your body shudders with the violent release of wild energies
+
+## source/fight.cc
+
+runrest_stop_message = You are electrocuted
+runrest_stop_message = You feel your power leaking away
+runrest_stop_message = You are splashed with acid
+runrest_stop_message = steals.*your
+runrest_stop_message = Your shroud falls apart
+
+## source/mutation.cc
+
+runrest_stop_message = Your body decomposes
+runrest_stop_message = You feel (stronger|weaker|dopey|clever|clumsy|agile)
+
+## source/mutation-data.h
+
+runrest_stop_message = Your skin
+runrest_stop_message = You feel.* healthy
+runrest_stop_message = You hunger for (flesh|vegetation)
+runrest_stop_message = You feel able to eat a more balanced diet
+runrest_stop_message = You feel (a sudden chill|hot for a moment)
+runrest_stop_message = You feel the presence of a demonic guardian
+runrest_stop_message = Your (demonic )?guardian
+runrest_stop_message = You feel (insulated|conductive)
+runrest_stop_message = You begin to
+runrest_stop_message = Your rate of healing slows
+runrest_stop_message = You stop healing
+runrest_stop_message = Your rate of healing increases
+runrest_stop_message = You feel a little hungry
+runrest_stop_message = Your metabolism slows
+runrest_stop_message = You feel (controlled|random)
+runrest_stop_message = You feel.* (weirdly uncertain|stable)
+runrest_stop_message = You feel.* (resistant|impervious|vulnerable).* hostile enchantments
+runrest_stop_message = You feel (quick|sluggish)
+runrest_stop_message = Your vision
+runrest_stop_message = Your body
+runrest_stop_message = You feel.* jumpy
+runrest_stop_message = There is a nasty taste in your mouth for a moment
+runrest_stop_message = You feel an ache in your throat
+runrest_stop_message = Your throat feels
+runrest_stop_message = A chill runs up and down your throat
+runrest_stop_message = You feel.* jittery
+runrest_stop_message = Your muscles feel
+runrest_stop_message = You feel.* urge
+runrest_stop_message = Your urge to
+runrest_stop_message = Your thoughts seem clearer
+runrest_stop_message = Your thinking seems confused
+runrest_stop_message = You feel.* (pissed|angry|calm)
+runrest_stop_message = You feel.* (wasting|fall apart|healthier)
+runrest_stop_message = You feel genetically
+runrest_stop_message = You feel (frail|robust)
+runrest_stop_message = You feel breathless
+runrest_stop_message = You feel (slight|a strange) anaesthesia
+runrest_stop_message = You feel negative
+runrest_stop_message = You smell fire and brimstone
+runrest_stop_message = You smell the fires of Gehenna
+runrest_stop_message = You feel the icy cold of Cocytus chill your soul
+runrest_stop_message = A pair of (horns|antennae) grows on your head
+runrest_stop_message = The (horns|antennae) on your head
+runrest_stop_message = Your mouth lengthens and hardens into a beak
+runrest_stop_message = Your beak shortens and softens into a mouth
+runrest_stop_message = Your (fingernails|fingers|hands|arms)
+runrest_stop_message = Your teeth
+runrest_stop_message = Your (feet|hooves|toenails|talons)
+runrest_stop_message = You taste something nasty
+runrest_stop_message = Your breath is less nasty
+runrest_stop_message = A poisonous barb forms on the end of your tail
+runrest_stop_message = The barb on your tail
+runrest_stop_message = Your wings
+runrest_stop_message = Fur sprouts all over your body
+runrest_stop_message = Your fur grows into a thick mane
+runrest_stop_message = Your thick fur grows shaggy and warm
+runrest_stop_message = You shed all your fur
+runrest_stop_message = Your thick fur recedes somewhat
+runrest_stop_message = Your shaggy fur recedes somewhat
+runrest_stop_message = You feel (more|less) energetic
+runrest_stop_message = You feel a strange attunement to the structure of the dungeons
+runrest_stop_message = Your attunement to dungeon structure grows
+runrest_stop_message = You feel slightly disoriented
+runrest_stop_message = An icy envelope takes form around you
+runrest_stop_message = You feel less concerned about (heat|cold)
+runrest_stop_message = You slip .* darkness
+runrest_stop_message = You are surrounded by darkness
+runrest_stop_message = Your affinity for the darkness
+runrest_stop_message = Sharp spines emerge from.*body
+runrest_stop_message = Your sharp spines
+runrest_stop_message = A wave of death
+runrest_stop_message = The wave of death
+runrest_stop_message = Your control of surrounding life forces
+runrest_stop_message = You feel.* energised by your suffering
+runrest_stop_message = Eyeballs (grow|cover)
+runrest_stop_message = The eyeballs on your body
+runrest_stop_message = Pseudopods emerge from your body
+runrest_stop_message = Your pseudopods
+runrest_stop_message = You feel more connected to the slimes
+runrest_stop_message = Your connection to the slimes vanishes
+runrest_stop_message = Acid begins to drip from your mouth
+runrest_stop_message = Your mouth feels dry
+runrest_stop_message = You begin to radiate repulsive energy
+runrest_stop_message = You feel less repulsive
+runrest_stop_message = Your repulsive radiation grows stronger
+runrest_stop_message = Colourless scales grow over part of your body
+runrest_stop_message = Your colourless scales
+runrest_stop_message = (Icy blue|Molten|Slimy green|Thin metallic|Yellow) scales cover your body completely
+runrest_stop_message = Your (icy blue|molten|slimy green|thin metallic|yellow) scales
+runrest_stop_message = Iridescent scales
+runrest_stop_message = Your iridescent scales
+runrest_stop_message = Large bone plates
+runrest_stop_message = Your large bone plates
+runrest_stop_message = (Rough black|Rugged brown) scales
+runrest_stop_message = Your (rough black|rugged brown) scales
+runrest_stop_message = Your bones become
+runrest_stop_message = Your skeletal structure
+runrest_stop_message = Your natural camouflage becomes
+
+## source/ouch.cc
+
+runrest_stop_message = The steam scalds you terribly
+runrest_stop_message = The fire burns you terribly
+runrest_stop_message = You feel a terrible chill
+runrest_stop_message = You feel a painful chill
+runrest_stop_message = The lava burns you terribly
+runrest_stop_message = The light scorches you terribly
+runrest_stop_message = The acid corrodes
+runrest_stop_message = You are now level
+runrest_stop_message = You feel drained
+runrest_stop_message = Ouch! That really hurt!
+
+## source/player.cc
+
+runrest_stop_message = Your scales start taking on
+runrest_stop_message = Extra life
+runrest_stop_message = Welcome back to level
+runrest_stop_message = You have reached level
+runrest_stop_message = Expiring:
+runrest_stop_message = You are.*with residual magics
+runrest_stop_message = You are engulfed in a nimbus of crackling magics
+runrest_stop_message = Your entire body has taken on an eerie glow
+runrest_stop_message = You feel more contaminated with magical energies
+runrest_stop_message = Your are.*confused
+runrest_stop_message = You have difficulty breathing
+runrest_stop_message = You are.*poisoned
+runrest_stop_message = You are covered in liquid flames
+runrest_stop_message = Your extra speed is starting to run out
+runrest_stop_message = You feel yourself slow down
+runrest_stop_message = You float gracefully downwards
+runrest_stop_message = Your feel your flesh (rotting|start to rot) away
+runrest_stop_message = You suddenly lose the ability to move
+runrest_stop_message = Your limbs have turned to stone
+runrest_stop_message = You are slowing down
+runrest_stop_message = You have turned to stone
+runrest_stop_message = You fall asleep
+
+## source/stairs.cc
+
+runrest_stop_message = You fall through a shaft
+runrest_stop_message = You dive down through the shaft
+
+# Announcements of timed portal vaults (bazaar, labyrinths):
+runrest_stop_message = interdimensional caravan
+runrest_stop_message = distant snort
+
+runrest_stop_message = ticking.*clock
+runrest_stop_message = coins.*counted
+runrest_stop_message = tolling.*bell
+
 # The file runrest_messages.txt contains a list of default
 # runrest message settings. Add your own before this to override
 # later settings.
