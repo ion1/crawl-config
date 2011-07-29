@@ -99,6 +99,9 @@ lua_file = lua/autofight.lua
 #
 autopickup = $?!+"/%
 
+# Tome of Destruction
+autopickup_exceptions = ancient heavily glowing book
+
 # There is a long list of autopickup exceptions in
 include = autopickup_exceptions.txt
 
