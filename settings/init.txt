@@ -653,11 +653,20 @@ fire_order += rock, javelin, handaxe, spear, dart / club, stone / dagger, net
 autoinscribe = distortion:!w
 # autoinscribe = bad_item.*potion:!q
 # autoinscribe = potion.*mutation:!q
-autoinscribe = potion.*(decay|degeneration|mutation|paralysis|poison|slowing):!q
+autoinscribe = bad_item.*potion:!q
+autoinscribe = potion.*mutation:!q
 # autoinscribe = royal jell:=g
 # autoinscribe_artefacts = false
 # autoinscribe_cursed = false
 # autoinscribe = fruit:!e
+
+: if you.god() == "Fedhas" then
+    autoinscribe = fruit:!e
+: end
+
+: if you.god() == "Kikubaaqudgha" then
+    autoinscribe = chunk:@w1
+: end
 
 ##### 4-n       Macro related Options #################
 #
