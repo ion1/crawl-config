@@ -207,6 +207,8 @@ runrest_ignore_poison  = 2:30
 runrest_ignore_monster = butterfly:1
 # runrest_ignore_monster = swamp worm:3
 runrest_ignore_monster = swamp worm:3
+runrest_ignore_monster = strange disturbance
+runrest_ignore_monster = fish:2
 
 runrest_stop_message = buoyancy|expire|float gracefully|transformation
 runrest_stop_message = You have gained.*skill
