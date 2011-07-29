@@ -351,21 +351,282 @@ menu_colour = notes:white:Reached XP level
 # force_more_message = There are no visible monsters within range
 # force_more_message = This wand has no charges
 
-force_more_message = You have reached level
-force_more_message = Your scales start
-force_more_message = You fall through a shaft
-force_more_message = buoyancy|expire|float gracefully|transformation
 force_more_message = You have gained.*skill
-force_more_message = warns you
+force_more_message = Ashenzari warns you
 force_more_message = You feel heavier
 force_more_message = You now have enough gold
+force_more_message = is unaffected
+force_more_message = You don't know that spell
+force_more_message = This wand has no charges
+force_more_message = You don't have enough magic to cast that spell
+force_more_message = You have disarmed
+force_more_message = You feel a strange sense of stasis
+force_more_message = You are mesmerised by
+force_more_message = Your ring of flames (is guttering|gutters) out
+force_more_message = A huge blade
+force_more_message = You have blundered into a Zot trap
+force_more_message = The writing blurs in front of your eyes
+force_more_message = starving
+force_more_message = devoid of blood
+force_more_message = divine experience
+force_more_message = lose consciousness
+force_more_message = Jiyva alters your body
+force_more_message = no longer charmed
 
 ## Reduce chance of drowning because levitation or form runs out:
 force_more_message = Careful!
 
+## source/main.cc _decrement_durations
+
+force_more_message = Your icy (armour|shield) starts to melt
+force_more_message = Your icy (armour|shield) evaporates
+force_more_message = Your hearing returns
+force_more_message = Your (repel|deflect) missiles spell is about to expire
+force_more_message = You feel less protected from missiles
+force_more_message = Your skin is crawling a little less now
+force_more_message = Your prayer is over
+force_more_message = Your divine shield starts to fade
+force_more_message = Your divine shield fades away
+force_more_message = Your .* seems blunter
+force_more_message = Your .* feels lighter
+force_more_message = Your .* goes out
+force_more_message = Your .* stops glowing
+force_more_message = Your .*'s frost melts away
+force_more_message = Your .* stops dripping with poison
+force_more_message = Your .* stops crackling
+force_more_message = Your .* seems straighter
+force_more_message = Your .* seems less pained
+force_more_message = Your .* seems more stable
+force_more_message = Your .* stops emitting sparks
+force_more_message = Your .*'s light goes out
+force_more_message = Your .* stops repelling magic
+force_more_message = Your .* seems inexplicably less special
+force_more_message = Your transformation is almost over
+# untransform {
+force_more_message = Your transformation has ended
+force_more_message = Your .* revert to their normal proportions
+force_more_message = You revert to your normal fleshy form
+force_more_message = You warm up again
+force_more_message = You feel yourself come back to life
+# }
+# emergency_untransform
+force_more_message = You quickly transform back into your natural form
+force_more_message = You have got your breath back
+force_more_message = You start to feel a little slower
+force_more_message = You feel sluggish
+force_more_message = You start to feel a little less insulated
+force_more_message = You feel conductive
+force_more_message = You start to feel less resistant to (fire|cold|poison)
+force_more_message = Your (fire|cold|poison) resistance expires
+force_more_message = You feel closer to the material plane
+force_more_message = You are firmly grounded in the material plane once more
+force_more_message = You feel less regenerative
+force_more_message = You begin to squint at shadows
+force_more_message = Your eyesight blurs momentarily
+force_more_message = You feel less empathic
+force_more_message = Your magical shield disappears
+force_more_message = Your skin feels tender
+force_more_message = You start to feel a little uncertain
+force_more_message = You feel uncertain
+force_more_message = Your unholy channel is weakening
+force_more_message = Your unholy channel expires
+force_more_message = You feel less studious
+force_more_message = You feel less stealthy
+force_more_message = You feel less lethal
+force_more_message = You flicker for a moment
+force_more_message = You flicker back into view
+force_more_message = You feel less charismatic
+force_more_message = Your slime is starting to congeal
+force_more_message = You feel less slimy
+force_more_message = Your thoughts are your own once more
+# :-P
+force_more_message = Quad Damage is wearing off
+force_more_message = Your dark mirror aura disappears
+force_more_message = You feel like a meek peon again
+force_more_message = Your hands slow down
+force_more_message = Your .* stop glowing
+force_more_message = The bond with your blade fades away
+force_more_message = You break out of your daze
+force_more_message = Your fear fades away
+force_more_message = The ground is no longer liquid beneath you
+force_more_message = You feel a little less (mighty|agile|clever) now
+force_more_message = You are no longer berserk
+force_more_message = You pass out from exhaustion
+force_more_message = You are no longer glowing
+force_more_message = The winds around you start to calm down
+force_more_message = The winds around you calm down
+force_more_message = You are starting to lose your buoyancy
+force_more_message = You lose control over your flight
+force_more_message = You feel your flesh rotting away
+force_more_message = Your time is quickly running out
+force_more_message = Your life is in your own hands again
+# zin_remove_divine_stamina
+force_more_message = Your divine stamina fades away
+# elyvilon_remove_divine_vigour
+force_more_message = Your divine vigour fades away
+force_more_message = Your astral sight fades away
+force_more_message = Your divine protection fades away
+force_more_message = The divine light dispels your darkness
+force_more_message = Your shroud begins to fray at the edges
+force_more_message = Your shroud unravels
+
+## source/beam.cc affect_player_enchantment
+
+force_more_message = Strange energies course through your body
+force_more_message = Your body is wracked with pain
+force_more_message = Pain shoots through your body
+force_more_message = You convulse
+force_more_message = You are blasted
+force_more_message = You feel like a pig
+
+## source/effects.cc
+
+force_more_message = You are blasted by holy energy
+force_more_message = Your body is wracked with pain
+force_more_message = Your knowledge of.*becomes hazy all of a sudden, and you forget the spell
+force_more_message = Something smites you
+force_more_message = The air twists around and violently strikes you in flight
+force_more_message = The air twists around and strikes you
+force_more_message = Something feeds on your intellect
+force_more_message = You feel haunted
+force_more_message = Orcish apparitions take form around you
+force_more_message = Your disease is taking its toll
+force_more_message = Your body shudders with the violent release of wild energies
+
+## source/fight.cc
+
+force_more_message = You are electrocuted
+force_more_message = You feel your power leaking away
+force_more_message = You are splashed with acid
+force_more_message = steals.*your
+force_more_message = Your shroud falls apart
+
+## source/mutation.cc
+
+force_more_message = Your body decomposes
+force_more_message = You feel (stronger|weaker|dopey|clever|clumsy|agile)
+
+## source/mutation-data.h
+
+force_more_message = Your skin
+force_more_message = You feel
+force_more_message = You hunger for (flesh|vegetation)
+force_more_message = Your (demonic )?guardian
+force_more_message = You begin to
+force_more_message = Your rate of healing slows
+force_more_message = You stop healing
+force_more_message = Your rate of healing increases
+force_more_message = Your metabolism slows
+force_more_message = Your vision
+force_more_message = Your body
+force_more_message = There is a nasty taste in your mouth for a moment
+force_more_message = Your throat feels
+force_more_message = A chill runs up and down your throat
+force_more_message = Your muscles feel
+force_more_message = Your urge to
+force_more_message = Your thoughts seem clearer
+force_more_message = Your thinking seems confused
+force_more_message = You smell
+force_more_message = A pair of (horns|antennae) grows on your head
+force_more_message = The (horns|antennae) on your head
+force_more_message = Your mouth lengthens and hardens into a beak
+force_more_message = Your beak shortens and softens into a mouth
+force_more_message = Your (fingernails|fingers|hands|arms)
+force_more_message = Your teeth
+force_more_message = Your (feet|hooves|toenails|talons)
+force_more_message = You taste something nasty
+force_more_message = Your breath is less nasty
+force_more_message = A poisonous barb forms on the end of your tail
+force_more_message = The barb on your tail
+force_more_message = Your wings
+force_more_message = Fur sprouts all over your body
+force_more_message = Your fur grows into a thick mane
+force_more_message = Your thick fur grows shaggy and warm
+force_more_message = You shed all your fur
+force_more_message = Your thick fur recedes somewhat
+force_more_message = Your shaggy fur recedes somewhat
+force_more_message = Your attunement to dungeon structure
+force_more_message = An icy envelope takes form around you
+force_more_message = You slip .* darkness
+force_more_message = You are surrounded by darkness
+force_more_message = Your affinity for the darkness
+force_more_message = emerge from.*your body
+force_more_message = Your sharp spines
+force_more_message = A wave of death
+force_more_message = The wave of death
+force_more_message = Your control of surrounding life forces
+force_more_message = Eyeballs (grow|cover)
+force_more_message = The eyeballs on your body
+force_more_message = Your pseudopods
+force_more_message = Your connection to the slimes vanishes
+force_more_message = Acid begins to drip from your mouth
+force_more_message = Your mouth feels dry
+force_more_message = You begin to radiate repulsive energy
+force_more_message = Your repulsive radiation grows stronger
+force_more_message = Colourless scales grow over part of your body
+force_more_message = Your colourless scales
+force_more_message = (Icy blue|Molten|Slimy green|Thin metallic|Yellow) scales cover your body completely
+force_more_message = Your (icy blue|molten|slimy green|thin metallic|yellow) scales
+force_more_message = Iridescent scales
+force_more_message = Your iridescent scales
+force_more_message = Large bone plates
+force_more_message = Your large bone plates
+force_more_message = (Rough black|Rugged brown) scales
+force_more_message = Your (rough black|rugged brown) scales
+force_more_message = Your bones become
+force_more_message = Your skeletal structure
+force_more_message = Your natural camouflage becomes
+
+## source/ouch.cc
+
+force_more_message = The steam scalds you terribly
+force_more_message = The fire burns you terribly
+force_more_message = You feel a terrible chill
+force_more_message = You feel a painful chill
+force_more_message = The lava burns you terribly
+force_more_message = The light scorches you terribly
+force_more_message = The acid corrodes
+force_more_message = You are now level
+force_more_message = You feel drained
+force_more_message = Ouch! That really hurt!
+
+## source/player.cc
+
+force_more_message = Your scales start taking on
+force_more_message = Extra life
+force_more_message = Welcome back to level
+force_more_message = You have reached level
+force_more_message = Expiring:
+force_more_message = You are.*with residual magics
+force_more_message = You are engulfed in a nimbus of crackling magics
+force_more_message = Your entire body has taken on an eerie glow
+force_more_message = You feel more contaminated with magical energies
+force_more_message = Your are.*confused
+force_more_message = You have difficulty breathing
+force_more_message = You are.*poisoned
+force_more_message = You are covered in liquid flames
+force_more_message = Your extra speed is starting to run out
+force_more_message = You feel yourself slow down
+force_more_message = You float gracefully downwards
+force_more_message = Your feel your flesh (rotting|start to rot) away
+force_more_message = You suddenly lose the ability to move
+force_more_message = Your limbs have turned to stone
+force_more_message = You are slowing down
+force_more_message = You have turned to stone
+force_more_message = You fall asleep
+
+## source/stairs.cc
+
+force_more_message = You fall through a shaft
+force_more_message = You dive down through the shaft
+
 # Announcements of timed portal vaults (bazaar, labyrinths):
 force_more_message = interdimensional caravan
 force_more_message = distant snort
+
+force_more_message = ticking.*clock
+force_more_message = coins.*counted
+force_more_message = tolling.*bell
 
 ##### 4-k       Firing Commands #######################
 #
