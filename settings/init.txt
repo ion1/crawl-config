@@ -102,6 +102,10 @@ autopickup = $?!+"/%
 # Tome of Destruction
 autopickup_exceptions = ancient heavily glowing book
 
+: if you.god() == "Nemelex Xobeh" then
+    autopickup_exceptions = <deck
+: end
+
 # There is a long list of autopickup exceptions in
 include = autopickup_exceptions.txt
 
