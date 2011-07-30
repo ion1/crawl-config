@@ -357,8 +357,9 @@ runrest_stop_message = The air twists around and strikes you
 runrest_stop_message = Something feeds on your intellect
 runrest_stop_message = You feel haunted
 runrest_stop_message = Orcish apparitions take form around you
-runrest_stop_message = Your disease is taking its toll
-runrest_stop_message = Your body shudders with the violent release of wild energies
+# Redundant, as mutations and other changes are already there.
+#runrest_stop_message = Your disease is taking its toll
+#runrest_stop_message = Your body shudders with the violent release of wild energies
 
 ## source/fight.cc
 
@@ -808,8 +809,9 @@ force_more_message = The air twists around and strikes you
 force_more_message = Something feeds on your intellect
 force_more_message = You feel haunted
 force_more_message = Orcish apparitions take form around you
-force_more_message = Your disease is taking its toll
-force_more_message = Your body shudders with the violent release of wild energies
+# Redundant, as mutations and other changes are already there.
+#force_more_message = Your disease is taking its toll
+#force_more_message = Your body shudders with the violent release of wild energies
 
 ## source/fight.cc
 
