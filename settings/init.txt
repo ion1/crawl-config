@@ -663,6 +663,11 @@ force_more_message = ticking.*clock
 force_more_message = coins.*counted
 force_more_message = tolling.*bell
 
+# Abyss exits and rune
+force_more_message = Found a gateway leading out of the Abyss
+force_more_message = Found .* abyssal rune of Zot
+
+
 ##### 4-k       Firing Commands #######################
 #
 # fire_items_start = a
@@ -751,6 +756,8 @@ note_monsters = orb of fire, ancient lich, Sigmund
 # char_set         = ascii
 char_set         = unicode
 # use_fake_player_cursor = false
+#
+# language = polski
 #
 # colour.lightgray = black
 # colour.lightcyan = cyan
