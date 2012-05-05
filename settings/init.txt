@@ -377,6 +377,7 @@ force_more_message = divine experience
 force_more_message = lose consciousness
 force_more_message = Jiyva alters your body
 force_more_message = no longer charmed
+force_more_message = from afar
 
 ## Reduce chance of drowning because levitation or form runs out:
 force_more_message = Careful!
