@@ -80,8 +80,10 @@ default_manual_training = true
 # autopickup = $?!:"/%
 autopickup = $?!+"/%
 
+autopickup_exceptions += of random effects
 # Tome of Destruction
 autopickup_exceptions += ancient heavily glowing book
+autopickup_exceptions += potion of.*blood
 
 : if you.god() == "Nemelex Xobeh" then
     autopickup_exceptions += <deck
@@ -163,6 +165,8 @@ explore_delay = 20
 # explore_greedy   = false
 # explore_stop     = items,stairs,shops,altars,portals,branches
 # explore_stop    += greedy_pickup_smart,greedy_visited_item_stack
+explore_stop     = items,stairs,shops,altars,portals,branches
+explore_stop    += greedy_pickup_smart,greedy_visited_item_stack
 # sacrifice_before_explore = true
 # explore_improved = true
 explore_improved = true
@@ -302,6 +306,7 @@ show_travel_trail       = true
 # menu_colour ^= inventory:magenta:shillelagh
 # or ones in pick-up dialogs:
 # menu_colour ^= pickup:green:god gift
+menu_colour ^= pickup:green:god gift
 
 # Colouring of messages
 # Messages are colour coded as follows:
@@ -315,6 +320,13 @@ show_travel_trail       = true
 # Notes also use, quite misnamed, menu_colour:
 # menu_colour ^= notes:white:Reached XP level
 
+# Highlight (partly) selected items
+menu_colour ^= inventory:white:\w \+\s
+menu_colour ^= inventory:white:\w \#\s
+
+# Colouring for the notes
+menu_colour ^= notes:white:Reached XP level
+
 # These lines will suppress extra feedback messages from travel/shift-running.
 #
 # message_colour ^= mute:warning:comes into view
@@ -322,6 +334,9 @@ show_travel_trail       = true
 # message_colour ^= mute:Done searching
 # message_colour ^= mute:(HP|Magic) restored
 # message_colour ^= mute:warning:Not with.*(in view|monsters around)
+
+message_colour ^= mute:Your.*(bites|misses|hits|stings)
+message_colour ^= mute:disappears in a puff of smoke
 
 # You can also enforce a --more-- prompt for messages
 
@@ -644,6 +659,10 @@ force_more_message += tolling.*bell
 force_more_message += Found a gateway leading out of the Abyss
 force_more_message += Found .* abyssal rune of Zot
 
+: if you.god() == "Xom" then
+    force_more_message += god:
+: end
+
 ##### 3-k       Firing Commands #######################
 #
 # fire_items_start = a
@@ -778,14 +797,26 @@ autoinscribe += potion.*mutation:!q
 ##### 4-c       Notes #################################
 #
 # user_note_prefix=@@@
+user_note_prefix=@@@
 # note_hp_percent = 5
+note_hp_percent = 5
 # note_skill_levels = 1,5,10,15,27
+note_skill_levels = 1,5,10,15,27
 # note_all_skill_levels = true
 # note_skill_max  = false
 # note_xom_effects = false
 # note_chat_messages = false
 # note_items    += rod of, acquirement, preservation, running, of Zot
+note_items    += rod of, acquirement, preservation, running, of Zot
+note_items    += robe of resistance
 # note_monsters += orb of fire, ancient lich, Sigmund
+note_monsters += orb of fire, ancient lich, Sigmund
+
+note_messages += You pass through the gate
+note_messages += cast .* Abyss
+note_messages += Your scales start
+note_messages += protects you from harm
+note_messages += You fall through a shaft
 
 ##### 5-  Miscellaneous #############################################
 #
@@ -833,3 +864,11 @@ show_player_species = true
 #
 # Override the vi movement keys with a non-command.
 # include = no_vi_command_keys.txt
+
+#####
+
+spell_slot ^= repel missiles:r
+spell_slot ^= switness:s
+spell_slot ^= flight:i
+spell_slot ^= regeneration:e
+spell_slot ^= blink:B
