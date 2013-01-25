@@ -169,6 +169,7 @@ explore_improved = true
 # explore_wall_bias = 0
 # travel_key_stop = false
 # auto_sacrifice = true
+auto_sacrifice = prompt
 #
 # explore_stop_pickup_ignore += curare
 # auto_exclude += oklob,statue,curse skull,roxanne,hyperactive,lightning spire
@@ -280,6 +281,7 @@ auto_drop_chunks           = rotten
 # msg_condense_short     = false
 # skill_focus            = false
 # show_travel_trail       = true
+show_travel_trail       = true
 
 ##### 3-j       Colours (messages and menus) ##########
 #
