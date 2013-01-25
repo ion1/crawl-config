@@ -72,36 +72,22 @@ default_manual_training = true
 # macro_dir  = settings/
 # sound = <regex>:<path to sound file>
 
-##### 3-  Lua Files #################################################
+##### 3-  Interface #################################################
 #
-lua_file = lua/stash.lua
-lua_file = lua/wield.lua
-lua_file = lua/runrest.lua
-lua_file = lua/gearset.lua
-lua_file = lua/trapwalk.lua
-
-# kills.lua yields more information at the cost of huge dumps.
-lua_file = lua/kills.lua
-
-# autofight.lua allows binding both movement and attack a single key.
-# Use at your own discretion! See options_guide.txt for details.
-lua_file = lua/autofight.lua
-
-##### 4-  Interface #################################################
+##### 3-a       Picking up and Dropping ###############
 #
-##### 4-a       Picking up and Dropping ###############
-#
+# Rods are \ here.
+# autopickup = $?!:"/%
 autopickup = $?!+"/%
 
 # Tome of Destruction
-autopickup_exceptions = ancient heavily glowing book
+autopickup_exceptions += ancient heavily glowing book
 
 : if you.god() == "Nemelex Xobeh" then
-    autopickup_exceptions = <deck
+    autopickup_exceptions += <deck
 : end
 
-# There is a long list of autopickup exceptions in
-include = autopickup_exceptions.txt
+# drop_filter += useless_item
 
 # default_autopickup = false
 # autopickup_no_burden = false
@@ -112,25 +98,25 @@ include = autopickup_exceptions.txt
 # drop_mode = (multi | single)
 # pickup_mode = (single | multi | auto:5)
 pickup_mode = single
-# drop_filter = skeleton, corpse, useless_item
-drop_filter = skeleton, corpse, useless_item
+# drop_filter += skeleton, corpse, useless_item
+drop_filter += skeleton, corpse, useless_item
 # default_friendly_pickup = (none | friend | player | all)
 default_friendly_pickup = none
 
-##### 4-b       Targetting ############################
+##### 3-b       Targetting ############################
 #
 # default_target = false
 # target_unshifted_dirs = true
 # darken_beyond_range = false
 
-##### 4-c       Passive Sightings #####################
+##### 3-c       Passive Sightings #####################
 #
 # detected_monster_colour = lightred
 # detected_item_colour = green
 # remembered_monster_colour = darkgrey
 # clean_map = true
 
-##### 4-d       Branding ##############################
+##### 3-d       Branding ##############################
 #
 # friend_brand       = hi:green
 # neutral_brand      = hi:lightgrey
@@ -147,13 +133,13 @@ heap_brand         = reverse
 feature_item_brand = reverse
 trap_item_brand    = reverse
 
-##### 4-e       Level Map Functions ###################
+##### 3-e       Level Map Functions ###################
 #
 # level_map_cursor_step = 7
 # level_map_title = false
 # show_waypoints = false
 
-##### 4-f       Viewport Options  ###################
+##### 3-f       Viewport Options  ###################
 #
 # view_max_width   = 33
 # view_max_height  = 21
@@ -166,7 +152,7 @@ trap_item_brand    = reverse
 # scroll_margin_y  = 2
 # scroll_margin    = 2
 
-##### 4-g       Travel and Exploration #################
+##### 3-g       Travel and Exploration #################
 #
 # travel_delay = 20
 # explore_delay = -1
@@ -177,13 +163,18 @@ explore_delay = 20
 # explore_greedy   = false
 # explore_stop     = items,stairs,shops,altars,portals,branches
 # explore_stop    += greedy_pickup_smart,greedy_visited_item_stack
+# sacrifice_before_explore = true
 # explore_improved = true
 explore_improved = true
 # explore_wall_bias = 0
 # travel_key_stop = false
+# auto_sacrifice = true
 #
-# explore_stop_pickup_ignore = curare
-auto_exclude = oklob,statue,curse skull,roxanne,hyperactive,lightning spire,mimic
+# explore_stop_pickup_ignore += curare
+# auto_exclude += oklob,statue,curse skull,roxanne,hyperactive,lightning spire
+# auto_exclude += mimic
+auto_exclude += oklob,statue,curse skull,roxanne,hyperactive,lightning spire
+auto_exclude += mimic
 
 # tc_reachable      = blue
 # tc_dangerous      = cyan
@@ -191,42 +182,35 @@ auto_exclude = oklob,statue,curse skull,roxanne,hyperactive,lightning spire,mimi
 # tc_excluded       = lightmagenta
 # tc_exclude_circle = red
 
-# runrest options (require runrest.lua to be included above)
-runrest_ignore_message = You feel.*sick
-runrest_ignore_message = Your.*skill increases to level
-runrest_ignore_message = You smell.*(decay|rotten|rotting)
-runrest_ignore_message = (disgusting|rotten) in your inventory
-runrest_ignore_message = smell of rotting flesh
-runrest_ignore_message = have completely rotted away
-runrest_ignore_message = Your.*stops glowing
-runrest_ignore_message = grinding
+# Interrupting run and rest compound commands:
+runrest_ignore_message ^= You feel.*sick
+runrest_ignore_message ^= Your.*skill increases to level
+runrest_ignore_message ^= You smell.*(decay|rotten|rotting)
+runrest_ignore_message ^= (disgusting|rotten) in your inventory
+runrest_ignore_message ^= smell of rotting flesh
+runrest_ignore_message ^= have completely rotted away
+runrest_ignore_message ^= Your.*stops glowing
+runrest_ignore_message ^= grinding
+# runrest_ignore_poison  = 2:30
 runrest_ignore_poison  = 2:30
-runrest_ignore_monster = butterfly:1
-# runrest_ignore_monster = swamp worm:3
-runrest_ignore_monster = swamp worm:3
-runrest_ignore_monster = strange disturbance
-runrest_ignore_monster = fish:2
+# runrest_ignore_monster ^= butterfly:1
+runrest_ignore_monster ^= butterfly:1
+# runrest_ignore_monster ^= swamp worm:3
+runrest_ignore_monster ^= swamp worm:3
+runrest_ignore_monster ^= strange disturbance
+runrest_ignore_monster ^= fish:2
+# runrest_stop_message ^= You hear a.* slurping noise
+# runrest_ignore_message ^= Jiyva's power touches on your attributes
 
-# The file runrest_messages.txt contains a list of default
-# runrest message settings. Add your own before this to override
-# later settings.
-# runrest_stop_message = You hear a.* slurping noise
-# runrest_ignore_message = Jiyva's power touches on your attributes
-include = runrest_messages.txt
+# A good number of runrest_messages is defined by default; you may want to
+# clear them or override some.
 
-trapwalk_safe_hp = dart:20,needle:15,arrow:35,bolt:45,spear:40,axe:45,blade:95
+# trapwalk_safe_hp = dart:20,needle:15,arrow:35,bolt:45,spear:40,blade:95
+trapwalk_safe_hp = dart:20,needle:15,arrow:35,bolt:45,spear:40,blade:95
 
 #rest_wait_both = true
 
-##### 4-h       Stashes ###############################
-#
-
-# annotate_item_class = true
-# annotate_item_dropped = true
-annotate_item_class = true
-annotate_item_dropped = true
-
-##### 4-i       Command Enhancements ##################
+##### 3-h       Command Enhancements ##################
 #
 # auto_list     = false
 # auto_switch   = true
@@ -250,13 +234,14 @@ auto_eat_chunks        = true
 # prompt_for_swap        = false
 # easy_quit_item_prompts = false
 # easy_exit_menu         = true
-# sort_menus = pickup: true : art, ego, basename, qualname, curse, qty
-sort_menus = pickup: true : art, ego, basename, qualname, curse, qty
-sort_menus = inv: true : equipped, freshness, charged
+# sort_menus += pickup: true : art, ego, basename, qualname, curse, qty
+# sort_menus += inv: true : equipped, freshness, charged
+sort_menus += pickup: true : art, ego, basename, qualname, curse, qty
+sort_menus += inv: true : equipped, freshness, charged
 
 # autofight_stop = 30
 
-##### 4-j       Messages and Display Enhancements #####
+##### 3-i       Messages and Display Enhancements #####
 #
 # hp_warning = 30
 # mp_warning = 0
@@ -277,9 +262,9 @@ stat_colour = 3:red, 7:lightred
 mlist_allow_alternate_layout = true
 # messages_at_top              = true
 # mlist_targetting             = true
-# show_gold_turns              = true
+# show_gold_turns              = false
 show_gold_turns              = true
-# show_game_turns              = true
+# show_game_turns              = false
 show_game_turns              = true
 # show_newturn_mark            = false
 # clear_messages             = true
@@ -289,21 +274,16 @@ small_more                 = true
 # show_inventory_weights     = true
 show_inventory_weights     = true
 # item_stack_summary_minimum = 5
-# list_rotten                = false
 # auto_drop_chunks           = (never | rotten | yes)
 auto_drop_chunks           = rotten
 # msg_condense_repeats   = false
 # msg_condense_short     = false
-# show_no_ctele          = false
 # skill_focus            = false
+# show_travel_trail       = true
 
-#####          Colours (messages and menus) #####
+##### 3-j       Colours (messages and menus) ##########
 #
-# menu_colour_prefix_class = false
-# menu_colour_shops = false
-
-# Food is colour coded in standard_colours.txt as follows:
-include = standard_colours.txt
+# Food is colour coded by default as follows:
 #
 #   yellow     = preferred food                    ($preferred)
 #   darkgrey   = cannot be eaten at all            ($inedible)
@@ -316,361 +296,353 @@ include = standard_colours.txt
 # You can change colours by using something like
 # $contaminated := magenta
 
-include = food_colouring.txt
-
-# There is elaborate colouring of items in the inventory (and other menus)
-# depending on their usefulness, taking species and other criteria into account.
-include = menu_colours.txt
-
-# Colouring of autoinscribed god gifts
-menu_colour = pickup:green:god gift
-
-# Highlight (partly) selected items
-menu_colour = inventory:white:\w \+\s
-menu_colour = inventory:white:\w \#\s
+# You can redefine inventory items like this:
+# menu_colour ^= inventory:magenta:shillelagh
+# or ones in pick-up dialogs:
+# menu_colour ^= pickup:green:god gift
 
 # Colouring of messages
-# Messages are colour coded in standard_colours.txt as follows:
+# Messages are colour coded as follows:
 #
 #   lightred   = really important messages  ($danger)
 #   yellow     = significant messages       ($warning)
 #   lightred   = item damaged/destroyed     ($item_dmg [same as $danger])
 #   darkgrey   = boring, message clutter    ($boring)
 #
-include = messages.txt
 
-# Colouring for the notes
-menu_colour = notes:white:Reached XP level
+# Notes also use, quite misnamed, menu_colour:
+# menu_colour ^= notes:white:Reached XP level
 
 # These lines will suppress extra feedback messages from travel/shift-running.
 #
-# message_colour = mute:warning:comes into view
-# message_colour = mute:You start (searching|resting)
-# message_colour = mute:Done searching
-# message_colour = mute:(HP|Magic) restored
-# message_colour = mute:warning:Not with.*(in view|monsters around)
+# message_colour ^= mute:warning:comes into view
+# message_colour ^= mute:You start (searching|resting)
+# message_colour ^= mute:Done searching
+# message_colour ^= mute:(HP|Magic) restored
+# message_colour ^= mute:warning:Not with.*(in view|monsters around)
 
 # You can also enforce a --more-- prompt for messages
 
 ## Avoid wasting turns with aborted actions:
-# force_more_message = There are no visible monsters within range
-# force_more_message = This wand has no charges
+# force_more_message += There are no visible monsters within range
+# force_more_message += This wand has no charges
 
-force_more_message = You have gained.*skill
-force_more_message = Ashenzari warns you
-force_more_message = You feel heavier
-force_more_message = You now have enough gold
-force_more_message = is unaffected
-force_more_message = You don't know that spell
-force_more_message = This wand has no charges
-force_more_message = You don't have enough magic to cast that spell
-force_more_message = You have disarmed
-force_more_message = You feel a strange sense of stasis
-force_more_message = You are mesmerised by
-force_more_message = Your ring of flames (is guttering|gutters) out
-force_more_message = A huge blade
-force_more_message = You have blundered into a Zot trap
-force_more_message = The writing blurs in front of your eyes
-force_more_message = starving
-force_more_message = devoid of blood
-force_more_message = divine experience
-force_more_message = lose consciousness
-force_more_message = Jiyva alters your body
-force_more_message = no longer charmed
-force_more_message = from afar
+# TODO: refresh these.
+
+force_more_message += You have gained.*skill
+force_more_message += Ashenzari warns you
+force_more_message += You feel heavier
+force_more_message += You now have enough gold
+force_more_message += is unaffected
+force_more_message += You don't know that spell
+force_more_message += This wand has no charges
+force_more_message += You don't have enough magic to cast that spell
+force_more_message += You have disarmed
+force_more_message += You feel a strange sense of stasis
+force_more_message += You are mesmerised by
+force_more_message += Your ring of flames (is guttering|gutters) out
+force_more_message += A huge blade
+force_more_message += You have blundered into a Zot trap
+force_more_message += The writing blurs in front of your eyes
+force_more_message += starving
+force_more_message += devoid of blood
+force_more_message += divine experience
+force_more_message += lose consciousness
+force_more_message += Jiyva alters your body
+force_more_message += no longer charmed
+force_more_message += from afar
 
 ## Reduce chance of drowning because levitation or form runs out:
-force_more_message = Careful!
+force_more_message += Careful!
 
 ## source/main.cc _decrement_durations
 
-force_more_message = Your icy (armour|shield) starts to melt
-force_more_message = Your icy (armour|shield) evaporates
-force_more_message = Your hearing returns
-force_more_message = Your (repel|deflect) missiles spell is about to expire
-force_more_message = You feel less protected from missiles
-force_more_message = Your skin is crawling a little less now
-force_more_message = Your prayer is over
-force_more_message = Your divine shield starts to fade
-force_more_message = Your divine shield fades away
-#force_more_message = Your .* seems blunter
-#force_more_message = Your .* feels lighter
-#force_more_message = Your .* goes out
-#force_more_message = Your .* stops glowing
-#force_more_message = Your .*'s frost melts away
-#force_more_message = Your .* stops dripping with poison
-#force_more_message = Your .* stops crackling
-#force_more_message = Your .* seems straighter
-#force_more_message = Your .* seems less pained
-#force_more_message = Your .* seems more stable
-#force_more_message = Your .* stops emitting sparks
-#force_more_message = Your .*'s light goes out
-#force_more_message = Your .* stops repelling magic
-#force_more_message = Your .* seems inexplicably less special
-force_more_message = Your transformation is almost over
+force_more_message += Your icy (armour|shield) starts to melt
+force_more_message += Your icy (armour|shield) evaporates
+force_more_message += Your hearing returns
+force_more_message += Your (repel|deflect) missiles spell is about to expire
+force_more_message += You feel less protected from missiles
+force_more_message += Your skin is crawling a little less now
+force_more_message += Your prayer is over
+force_more_message += Your divine shield starts to fade
+force_more_message += Your divine shield fades away
+#force_more_message += Your .* seems blunter
+#force_more_message += Your .* feels lighter
+#force_more_message += Your .* goes out
+#force_more_message += Your .* stops glowing
+#force_more_message += Your .*'s frost melts away
+#force_more_message += Your .* stops dripping with poison
+#force_more_message += Your .* stops crackling
+#force_more_message += Your .* seems straighter
+#force_more_message += Your .* seems less pained
+#force_more_message += Your .* seems more stable
+#force_more_message += Your .* stops emitting sparks
+#force_more_message += Your .*'s light goes out
+#force_more_message += Your .* stops repelling magic
+#force_more_message += Your .* seems inexplicably less special
+force_more_message += Your transformation is almost over
 # untransform {
-force_more_message = Your transformation has ended
-force_more_message = Your .* revert to their normal proportions
-force_more_message = You revert to your normal fleshy form
-force_more_message = You warm up again
-force_more_message = You feel yourself come back to life
+force_more_message += Your transformation has ended
+force_more_message += Your .* revert to their normal proportions
+force_more_message += You revert to your normal fleshy form
+force_more_message += You warm up again
+force_more_message += You feel yourself come back to life
 # }
 # emergency_untransform
-force_more_message = You quickly transform back into your natural form
-force_more_message = You have got your breath back
-force_more_message = You start to feel a little slower
-force_more_message = You feel sluggish
-force_more_message = You start to feel a little less insulated
-force_more_message = You feel conductive
-force_more_message = You start to feel less resistant to (fire|cold|poison)
-force_more_message = Your (fire|cold|poison) resistance expires
-force_more_message = You feel closer to the material plane
-force_more_message = You are firmly grounded in the material plane once more
-#force_more_message = You feel less regenerative
-force_more_message = You begin to squint at shadows
-force_more_message = Your eyesight blurs momentarily
-force_more_message = You feel less empathic
-force_more_message = Your magical shield disappears
-force_more_message = Your skin feels tender
-force_more_message = You start to feel a little uncertain
-force_more_message = You feel uncertain
-force_more_message = Your unholy channel is weakening
-force_more_message = Your unholy channel expires
-force_more_message = You feel less studious
-force_more_message = You feel less stealthy
-force_more_message = You feel less lethal
-force_more_message = You flicker for a moment
-force_more_message = You flicker back into view
-force_more_message = You feel less charismatic
-force_more_message = Your slime is starting to congeal
-force_more_message = You feel less slimy
-force_more_message = Your thoughts are your own once more
+force_more_message += You quickly transform back into your natural form
+force_more_message += You have got your breath back
+force_more_message += You start to feel a little slower
+force_more_message += You feel sluggish
+force_more_message += You start to feel a little less insulated
+force_more_message += You feel conductive
+force_more_message += You start to feel less resistant to (fire|cold|poison)
+force_more_message += Your (fire|cold|poison) resistance expires
+force_more_message += You feel closer to the material plane
+force_more_message += You are firmly grounded in the material plane once more
+#force_more_message += You feel less regenerative
+force_more_message += You begin to squint at shadows
+force_more_message += Your eyesight blurs momentarily
+force_more_message += You feel less empathic
+force_more_message += Your magical shield disappears
+force_more_message += Your skin feels tender
+force_more_message += You start to feel a little uncertain
+force_more_message += You feel uncertain
+force_more_message += Your unholy channel is weakening
+force_more_message += Your unholy channel expires
+force_more_message += You feel less studious
+force_more_message += You feel less stealthy
+force_more_message += You feel less lethal
+force_more_message += You flicker for a moment
+force_more_message += You flicker back into view
+force_more_message += You feel less charismatic
+force_more_message += Your slime is starting to congeal
+force_more_message += You feel less slimy
+force_more_message += Your thoughts are your own once more
 # :-P
-force_more_message = Quad Damage is wearing off
-force_more_message = Your dark mirror aura disappears
-force_more_message = You feel like a meek peon again
-force_more_message = Your hands slow down
-force_more_message = Your .* stop glowing
-force_more_message = The bond with your blade fades away
-force_more_message = You break out of your daze
-force_more_message = Your fear fades away
-force_more_message = The ground is no longer liquid beneath you
-force_more_message = You feel a little less (mighty|agile|clever) now
-force_more_message = You are no longer berserk
-force_more_message = You pass out from exhaustion
-force_more_message = You are no longer glowing
-force_more_message = The winds around you start to calm down
-force_more_message = The winds around you calm down
-force_more_message = You are starting to lose your buoyancy
-force_more_message = You lose control over your flight
-force_more_message = You feel your flesh rotting away
-force_more_message = Your time is quickly running out
-force_more_message = Your life is in your own hands again
+force_more_message += Quad Damage is wearing off
+force_more_message += Your dark mirror aura disappears
+force_more_message += You feel like a meek peon again
+force_more_message += Your hands slow down
+force_more_message += Your .* stop glowing
+force_more_message += The bond with your blade fades away
+force_more_message += You break out of your daze
+force_more_message += Your fear fades away
+force_more_message += The ground is no longer liquid beneath you
+force_more_message += You feel a little less (mighty|agile|clever) now
+force_more_message += You are no longer berserk
+force_more_message += You pass out from exhaustion
+force_more_message += You are no longer glowing
+force_more_message += The winds around you start to calm down
+force_more_message += The winds around you calm down
+force_more_message += You are starting to lose your buoyancy
+force_more_message += You lose control over your flight
+force_more_message += You feel your flesh rotting away
+force_more_message += Your time is quickly running out
+force_more_message += Your life is in your own hands again
 # zin_remove_divine_stamina
-force_more_message = Your divine stamina fades away
+force_more_message += Your divine stamina fades away
 # elyvilon_remove_divine_vigour
-force_more_message = Your divine vigour fades away
-force_more_message = Your astral sight fades away
-force_more_message = Your divine protection fades away
-force_more_message = The divine light dispels your darkness
-force_more_message = Your shroud begins to fray at the edges
-force_more_message = Your shroud unravels
+force_more_message += Your divine vigour fades away
+force_more_message += Your astral sight fades away
+force_more_message += Your divine protection fades away
+force_more_message += The divine light dispels your darkness
+force_more_message += Your shroud begins to fray at the edges
+force_more_message += Your shroud unravels
 
 ## source/beam.cc affect_player_enchantment
 
-force_more_message = Strange energies course through your body
-force_more_message = Your body is wracked with pain
-force_more_message = Pain shoots through your body
-force_more_message = You convulse
-force_more_message = You are blasted
-force_more_message = You feel like a pig
+force_more_message += Strange energies course through your body
+force_more_message += Your body is wracked with pain
+force_more_message += Pain shoots through your body
+force_more_message += You convulse
+force_more_message += You are blasted
+force_more_message += You feel like a pig
 
 ## source/effects.cc
 
-force_more_message = You are blasted by holy energy
-force_more_message = Your body is wracked with pain
-force_more_message = Your knowledge of.*becomes hazy all of a sudden, and you forget the spell
-force_more_message = Something smites you
-force_more_message = The air twists around and violently strikes you in flight
-force_more_message = The air twists around and strikes you
-force_more_message = Something feeds on your intellect
-force_more_message = You feel haunted
-force_more_message = Orcish apparitions take form around you
+force_more_message += You are blasted by holy energy
+force_more_message += Your body is wracked with pain
+force_more_message += Your knowledge of.*becomes hazy all of a sudden, and you forget the spell
+force_more_message += Something smites you
+force_more_message += The air twists around and violently strikes you in flight
+force_more_message += The air twists around and strikes you
+force_more_message += Something feeds on your intellect
+force_more_message += You feel haunted
+force_more_message += Orcish apparitions take form around you
 # Redundant, as mutations and other changes are already there.
-#force_more_message = Your disease is taking its toll
-#force_more_message = Your body shudders with the violent release of wild energies
+#force_more_message += Your disease is taking its toll
+#force_more_message += Your body shudders with the violent release of wild energies
 
 ## source/fight.cc
 
-force_more_message = You are electrocuted
-force_more_message = You feel your power leaking away
-force_more_message = You are splashed with acid
-force_more_message = steals.*your
-force_more_message = Your shroud falls apart
+force_more_message += You are electrocuted
+force_more_message += You feel your power leaking away
+force_more_message += You are splashed with acid
+force_more_message += steals.*your
+force_more_message += Your shroud falls apart
 
 ## source/mutation.cc
 
-force_more_message = Your body decomposes
-force_more_message = You feel (stronger|weaker|dopey|clever|clumsy|agile)
+force_more_message += Your body decomposes
+force_more_message += You feel (stronger|weaker|dopey|clever|clumsy|agile)
 
 ## source/mutation-data.h
 
-force_more_message = Your skin
-force_more_message = You feel.* healthy
-force_more_message = You hunger for (flesh|vegetation)
-force_more_message = You feel able to eat a more balanced diet
-force_more_message = You feel (a sudden chill|hot for a moment)
-force_more_message = You feel the presence of a demonic guardian
-force_more_message = Your (demonic )?guardian
-force_more_message = You feel (insulated|conductive)
-force_more_message = You begin to
-force_more_message = Your rate of healing slows
-force_more_message = You stop healing
-force_more_message = Your rate of healing increases
-force_more_message = You feel a little hungry
-force_more_message = Your metabolism slows
-force_more_message = You feel (controlled|random)
-force_more_message = You feel.* (weirdly uncertain|stable)
-force_more_message = You feel.* (resistant|impervious|vulnerable).* hostile enchantments
-force_more_message = You feel (quick|sluggish)
-force_more_message = Your vision
-force_more_message = Your body
-force_more_message = You feel.* jumpy
-force_more_message = There is a nasty taste in your mouth for a moment
-force_more_message = You feel an ache in your throat
-force_more_message = Your throat feels
-force_more_message = A chill runs up and down your throat
-force_more_message = You feel.* jittery
-force_more_message = Your muscles feel
-force_more_message = You feel.* urge
-force_more_message = Your urge to
-force_more_message = Your thoughts seem clearer
-force_more_message = Your thinking seems confused
-force_more_message = You feel.* (pissed|angry|calm)
-force_more_message = You feel.* (wasting|fall apart|healthier)
-force_more_message = You feel genetically
-force_more_message = You feel (frail|robust)
-force_more_message = You feel breathless
-force_more_message = You feel (slight|a strange) anaesthesia
-force_more_message = You feel negative
-force_more_message = You smell fire and brimstone
-force_more_message = You smell the fires of Gehenna
-force_more_message = You feel the icy cold of Cocytus chill your soul
-force_more_message = A pair of (horns|antennae) grows on your head
-force_more_message = The (horns|antennae) on your head
-force_more_message = Your mouth lengthens and hardens into a beak
-force_more_message = Your beak shortens and softens into a mouth
-force_more_message = Your (fingernails|fingers|hands|arms)
-force_more_message = Your teeth
-force_more_message = Your (feet|hooves|toenails|talons)
-force_more_message = You taste something nasty
-force_more_message = Your breath is less nasty
-force_more_message = A poisonous barb forms on the end of your tail
-force_more_message = The barb on your tail
-force_more_message = Your wings
-force_more_message = Fur sprouts all over your body
-force_more_message = Your fur grows into a thick mane
-force_more_message = Your thick fur grows shaggy and warm
-force_more_message = You shed all your fur
-force_more_message = Your thick fur recedes somewhat
-force_more_message = Your shaggy fur recedes somewhat
-force_more_message = You feel (more|less) energetic
-force_more_message = You feel a strange attunement to the structure of the dungeons
-force_more_message = Your attunement to dungeon structure grows
-force_more_message = You feel slightly disoriented
-force_more_message = An icy envelope takes form around you
-force_more_message = You feel less concerned about (heat|cold)
-force_more_message = You slip .* darkness
-force_more_message = You are surrounded by darkness
-force_more_message = Your affinity for the darkness
-force_more_message = Sharp spines emerge from.*body
-force_more_message = Your sharp spines
-force_more_message = A wave of death
-force_more_message = The wave of death
-force_more_message = Your control of surrounding life forces
-force_more_message = You feel.* energised by your suffering
-force_more_message = Eyeballs (grow|cover)
-force_more_message = The eyeballs on your body
-force_more_message = Pseudopods emerge from your body
-force_more_message = Your pseudopods
-force_more_message = You feel more connected to the slimes
-force_more_message = Your connection to the slimes vanishes
-force_more_message = Acid begins to drip from your mouth
-force_more_message = Your mouth feels dry
-force_more_message = You begin to radiate repulsive energy
-force_more_message = You feel less repulsive
-force_more_message = Your repulsive radiation grows stronger
-force_more_message = Colourless scales grow over part of your body
-force_more_message = Your colourless scales
-force_more_message = (Icy blue|Molten|Slimy green|Thin metallic|Yellow) scales cover your body completely
-force_more_message = Your (icy blue|molten|slimy green|thin metallic|yellow) scales
-force_more_message = Iridescent scales
-force_more_message = Your iridescent scales
-force_more_message = Large bone plates
-force_more_message = Your large bone plates
-force_more_message = (Rough black|Rugged brown) scales
-force_more_message = Your (rough black|rugged brown) scales
-force_more_message = Your bones become
-force_more_message = Your skeletal structure
-force_more_message = Your natural camouflage becomes
+force_more_message += Your skin
+force_more_message += You feel.* healthy
+force_more_message += You hunger for (flesh|vegetation)
+force_more_message += You feel able to eat a more balanced diet
+force_more_message += You feel (a sudden chill|hot for a moment)
+force_more_message += You feel the presence of a demonic guardian
+force_more_message += Your (demonic )?guardian
+force_more_message += You feel (insulated|conductive)
+force_more_message += You begin to
+force_more_message += Your rate of healing slows
+force_more_message += You stop healing
+force_more_message += Your rate of healing increases
+force_more_message += You feel a little hungry
+force_more_message += Your metabolism slows
+force_more_message += You feel (controlled|random)
+force_more_message += You feel.* (weirdly uncertain|stable)
+force_more_message += You feel.* (resistant|impervious|vulnerable).* hostile enchantments
+force_more_message += You feel (quick|sluggish)
+force_more_message += Your vision
+force_more_message += Your body
+force_more_message += You feel.* jumpy
+force_more_message += There is a nasty taste in your mouth for a moment
+force_more_message += You feel an ache in your throat
+force_more_message += Your throat feels
+force_more_message += A chill runs up and down your throat
+force_more_message += You feel.* jittery
+force_more_message += Your muscles feel
+force_more_message += You feel.* urge
+force_more_message += Your urge to
+force_more_message += Your thoughts seem clearer
+force_more_message += Your thinking seems confused
+force_more_message += You feel.* (pissed|angry|calm)
+force_more_message += You feel.* (wasting|fall apart|healthier)
+force_more_message += You feel genetically
+force_more_message += You feel (frail|robust)
+force_more_message += You feel breathless
+force_more_message += You feel (slight|a strange) anaesthesia
+force_more_message += You feel negative
+force_more_message += You smell fire and brimstone
+force_more_message += You smell the fires of Gehenna
+force_more_message += You feel the icy cold of Cocytus chill your soul
+force_more_message += A pair of (horns|antennae) grows on your head
+force_more_message += The (horns|antennae) on your head
+force_more_message += Your mouth lengthens and hardens into a beak
+force_more_message += Your beak shortens and softens into a mouth
+force_more_message += Your (fingernails|fingers|hands|arms)
+force_more_message += Your teeth
+force_more_message += Your (feet|hooves|toenails|talons)
+force_more_message += You taste something nasty
+force_more_message += Your breath is less nasty
+force_more_message += A poisonous barb forms on the end of your tail
+force_more_message += The barb on your tail
+force_more_message += Your wings
+force_more_message += Fur sprouts all over your body
+force_more_message += Your fur grows into a thick mane
+force_more_message += Your thick fur grows shaggy and warm
+force_more_message += You shed all your fur
+force_more_message += Your thick fur recedes somewhat
+force_more_message += Your shaggy fur recedes somewhat
+force_more_message += You feel (more|less) energetic
+force_more_message += You feel a strange attunement to the structure of the dungeons
+force_more_message += Your attunement to dungeon structure grows
+force_more_message += You feel slightly disoriented
+force_more_message += An icy envelope takes form around you
+force_more_message += You feel less concerned about (heat|cold)
+force_more_message += You slip .* darkness
+force_more_message += You are surrounded by darkness
+force_more_message += Your affinity for the darkness
+force_more_message += Sharp spines emerge from.*body
+force_more_message += Your sharp spines
+force_more_message += A wave of death
+force_more_message += The wave of death
+force_more_message += Your control of surrounding life forces
+force_more_message += You feel.* energised by your suffering
+force_more_message += Eyeballs (grow|cover)
+force_more_message += The eyeballs on your body
+force_more_message += Pseudopods emerge from your body
+force_more_message += Your pseudopods
+force_more_message += You feel more connected to the slimes
+force_more_message += Your connection to the slimes vanishes
+force_more_message += Acid begins to drip from your mouth
+force_more_message += Your mouth feels dry
+force_more_message += You begin to radiate repulsive energy
+force_more_message += You feel less repulsive
+force_more_message += Your repulsive radiation grows stronger
+force_more_message += Colourless scales grow over part of your body
+force_more_message += Your colourless scales
+force_more_message += (Icy blue|Molten|Slimy green|Thin metallic|Yellow) scales cover your body completely
+force_more_message += Your (icy blue|molten|slimy green|thin metallic|yellow) scales
+force_more_message += Iridescent scales
+force_more_message += Your iridescent scales
+force_more_message += Large bone plates
+force_more_message += Your large bone plates
+force_more_message += (Rough black|Rugged brown) scales
+force_more_message += Your (rough black|rugged brown) scales
+force_more_message += Your bones become
+force_more_message += Your skeletal structure
+force_more_message += Your natural camouflage becomes
 
 ## source/ouch.cc
 
-force_more_message = The steam scalds you terribly
-force_more_message = The fire burns you terribly
-force_more_message = You feel a terrible chill
-force_more_message = You feel a painful chill
-force_more_message = The lava burns you terribly
-force_more_message = The light scorches you terribly
-force_more_message = The acid corrodes
-force_more_message = You are now level
-force_more_message = You feel drained
-force_more_message = Ouch! That really hurt!
+force_more_message += The steam scalds you terribly
+force_more_message += The fire burns you terribly
+force_more_message += You feel a terrible chill
+force_more_message += You feel a painful chill
+force_more_message += The lava burns you terribly
+force_more_message += The light scorches you terribly
+force_more_message += The acid corrodes
+force_more_message += You are now level
+force_more_message += You feel drained
+force_more_message += Ouch! That really hurt!
 
 ## source/player.cc
 
-force_more_message = Your scales start taking on
-force_more_message = Extra life
-force_more_message = Welcome back to level
-force_more_message = You have reached level
-force_more_message = Expiring:
-force_more_message = You are.*with residual magics
-force_more_message = You are engulfed in a nimbus of crackling magics
-force_more_message = Your entire body has taken on an eerie glow
-force_more_message = You feel more contaminated with magical energies
-force_more_message = Your are.*confused
-force_more_message = You have difficulty breathing
-force_more_message = You are.*poisoned
-force_more_message = You are covered in liquid flames
-force_more_message = Your extra speed is starting to run out
-force_more_message = You feel yourself slow down
-force_more_message = You float gracefully downwards
-force_more_message = Your feel your flesh (rotting|start to rot) away
-force_more_message = You suddenly lose the ability to move
-force_more_message = Your limbs have turned to stone
-force_more_message = You are slowing down
-force_more_message = You have turned to stone
-force_more_message = You fall asleep
+force_more_message += Your scales start taking on
+force_more_message += Extra life
+force_more_message += Welcome back to level
+force_more_message += You have reached level
+force_more_message += Expiring:
+force_more_message += You are.*with residual magics
+force_more_message += You are engulfed in a nimbus of crackling magics
+force_more_message += Your entire body has taken on an eerie glow
+force_more_message += You feel more contaminated with magical energies
+force_more_message += Your are.*confused
+force_more_message += You have difficulty breathing
+force_more_message += You are.*poisoned
+force_more_message += You are covered in liquid flames
+force_more_message += Your extra speed is starting to run out
+force_more_message += You feel yourself slow down
+force_more_message += You float gracefully downwards
+force_more_message += Your feel your flesh (rotting|start to rot) away
+force_more_message += You suddenly lose the ability to move
+force_more_message += Your limbs have turned to stone
+force_more_message += You are slowing down
+force_more_message += You have turned to stone
+force_more_message += You fall asleep
 
 ## source/stairs.cc
 
-force_more_message = You fall through a shaft
-force_more_message = You dive down through the shaft
+force_more_message += You fall through a shaft
+force_more_message += You dive down through the shaft
 
 # Announcements of timed portal vaults (bazaar, labyrinths):
-force_more_message = interdimensional caravan
-force_more_message = distant snort
+force_more_message += interdimensional caravan
+force_more_message += distant snort
 
-force_more_message = ticking.*clock
-force_more_message = coins.*counted
-force_more_message = tolling.*bell
+force_more_message += ticking.*clock
+force_more_message += coins.*counted
+force_more_message += tolling.*bell
 
 # Abyss exits and rune
-force_more_message = Found a gateway leading out of the Abyss
-force_more_message = Found .* abyssal rune of Zot
+force_more_message += Found a gateway leading out of the Abyss
+force_more_message += Found .* abyssal rune of Zot
 
-
-##### 4-k       Firing Commands #######################
+##### 3-k       Firing Commands #######################
 #
 # fire_items_start = a
 # fire_order = launcher, return
@@ -681,73 +653,141 @@ fire_order  = launcher, inscribed, return
 # damage      20    10       7        6      5            4               0
 fire_order += rock, javelin, handaxe, spear, dart / club, stone / dagger, net
 
-##### 4-l       Channels ##############################
+##### 3-l       Channels ##############################
 #
 # channel.multiturn = mute
 
-##### 4-m       Inscriptions ##########################
+##### 3-m       Inscriptions ##########################
 #
-autoinscribe = distortion:!w
-# autoinscribe = bad_item.*potion:!q
-# autoinscribe = potion.*mutation:!q
-autoinscribe = bad_item.*potion:!q
-autoinscribe = potion.*mutation:!q
-# autoinscribe = royal jell:=g
-# autoinscribe_artefacts = false
+autoinscribe += distortion:!w
+# autoinscribe += bad_item.*potion:!q
+# autoinscribe += potion.*mutation:!q
+autoinscribe += bad_item.*potion:!q
+autoinscribe += potion.*mutation:!q
 # autoinscribe_cursed = false
-# autoinscribe = fruit:!e
+# autoinscribe += fruit:!e
 
 : if you.god() == "Fedhas" then
-    autoinscribe = fruit:!e
+    autoinscribe += fruit:!e
 : end
 
 : if you.god() == "Kikubaaqudgha" then
-    autoinscribe = chunk:@w1
+    autoinscribe += chunk:@w1
 : end
 
-##### 4-n       Macro related Options #################
+##### 3-n       Macro related Options #################
 #
 # flush.failure = false
 # flush.command = true
 # flush.message = true
 
-##### 4-t       Tile related Options ##################
-
-# All tiles specific options are in the external file
-include = tiles_options.txt
-
-##### 5-  Dump File #################################################
+##### 3-o       Tile related Options ##################
 #
-##### 5-a       Items and Kill List ###################
+# tile_show_items = !?/%=([)x}:|\
+
+# tile_skip_title = true
+# tile_menu_icons = false
+
+### The following lines define the colours of various objects within the
+### tiles minimap. See options_guide.txt for more details.
+
+# tile_player_col      = white
+# tile_monster_col     = red
+# tile_neutral_col     = red
+# tile_peaceful_col    = lightred
+# tile_friendly_col    = lightred
+# tile_plant_col       = darkgreen
+# tile_item_col        = green
+# tile_unseen_col      = black
+# tile_floor_col       = lightgrey
+# tile_wall_col        = darkgrey
+# tile_mapped_wall_col = blue
+# tile_door_col        = brown
+# tile_downstairs_col  = magenta
+# tile_upstairs_col    = blue
+# tile_feature_col     = cyan
+# tile_trap_col        = yellow
+# tile_water_col       = grey
+# tile_lava_col        = grey
+# tile_excluded_col    = darkcyan
+# tile_excl_centre     = darkblue
+# tile_window_col      = yellow
+
+# If Crawl's response rate is too slow, try increasing the update rate.
+# tile_update_rate      = 1000
+
+# If Crawl is lagging when running or resting, try increasing this number.
+# tile_runrest_rate = 100
+
+# tile_key_repeat_delay = 200
+# tile_tooltip_ms       = 500
+
+# tile_tag_pref = enemy
+
+### Note: setting window, map or font sizes to '0' implies auto-sizing.
+
+# tile_full_screen      = true
+# tile_window_width     = 1024
+# tile_window_height    = 768
+# tile_use_small_layout = true
+# tile_map_pixels       = 3
+# tile_cell_pixels      = 32
+# tile_filter_scaling   = true
+# tile_force_overlay    = true
+# tile_layout_priority  = minimap, inventory, gold_turn, command, spell
+# tile_layout_priority += ability, monster
+
+# tile_font_crt_file  = VeraMono.ttf
+# tile_font_crt_size  = 15
+# tile_font_stat_file = VeraMono.ttf
+# tile_font_stat_size = 16
+# tile_font_msg_file  = VeraMono.ttf
+# tile_font_msg_size  = 14
+# tile_font_tip_file  = VeraMono.ttf
+# tile_font_tip_size  = 15
+# tile_font_lbl_file  = Vera.ttf
+# tile_font_lbl_size  = 14
+# tile_font_ft_light  = false
+
+# tile_show_minihealthbar = false
+# tile_show_minimagicbar  = false
+
+
+##### 4-  Dump File #################################################
+#
+##### 4-a       Saving ################################
+#
+# dump_on_save = false
+
+##### 4-b       Items and Kill List ###################
 #
 # kill_map = friend:you, other:you
 # dump_kill_places = (single | all | none)
+# dump_kill_breakdowns = true
 # dump_item_origins = all,artifacts,ego_arm,ego_weap,jewellery,runes
 # dump_item_origin_price = -1
 # dump_message_count = 20
 # dump_order  = header, hiscore, stats, misc, notes, inventory,
 # dump_order += turns_by_place, skills, spells, overview, mutations,
 # dump_order += messages, screenshot, monlist, kills_by_place, kills
-# dump_order += spell_usage, action_counts
+# dump_order += action_counts
 # dump_book_spells = false
 
-##### 5-b       Notes #################################
+##### 4-c       Notes #################################
 #
 # user_note_prefix=@@@
-note_hp_percent = 5
-note_skill_levels = 1,5,10,15,27
-#note_all_skill_levels = true
-#note_skill_max  = false
-#note_xom_effects = false
-note_items    = rod of, acquirement, preservation, running, of Zot
-note_messages = Your scales start
-note_messages = protects you from harm
-note_messages = You fall through a shaft
-note_monsters = orb of fire, ancient lich, Sigmund
+# note_hp_percent = 5
+# note_skill_levels = 1,5,10,15,27
+# note_all_skill_levels = true
+# note_skill_max  = false
+# note_xom_effects = false
+# note_chat_messages = false
+# note_items    += rod of, acquirement, preservation, running, of Zot
+# note_monsters += orb of fire, ancient lich, Sigmund
 
-##### 6-  Miscellaneous #############################################
+##### 5-  Miscellaneous #############################################
 #
-##### 6-a       All OS ################################
+##### 5-a       All OS ################################
 #
 # mouse_input      = true
 # wiz_mode         = no
@@ -755,7 +795,12 @@ note_monsters = orb of fire, ancient lich, Sigmund
 char_set         = unicode
 # use_fake_player_cursor = false
 #
-# language = polski
+# Translation to use (in 0.11, only badly incomplete descriptions; Polish
+# has god messages and a few misc, Greek has sheep).
+# language = pl|fr|zh|ko|fi|ru|el|da|li|pt|de|lv|cs|hu
+#
+# Joke translations (complete!).
+# language = dwarven|jagerkin|kraut|runes|wide
 #
 # colour.lightgray = black
 # colour.lightcyan = cyan
@@ -765,21 +810,21 @@ char_set         = unicode
 show_player_species = true
 
 # See options_guide.txt for the options
-# cset, feature, mon_glyph
+# cset, feature, mon_glyph, item_glyph
 
 ## Highlight the edge of unexplored terrain.
 # feature = explore horizon {',,green}
 
-##### 6-b   Windows console #######################
+##### 5-b   Windows console #######################
 #
 # dos_use_background_intensity = true
 # background = black
 
-##### 6-c   Unix console ##########################
+##### 5-c   Unix console ##########################
 #
 # use_fake_cursor = false
 
-##### 6-d   Alternative keybinding files ##########
+##### 5-d   Alternative keybinding files ##########
 #
 # Alternative vi bindings for Dvorak users.
 # include = dvorak_command_keys.txt
